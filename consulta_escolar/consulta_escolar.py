@@ -1,8 +1,7 @@
 #instalar biblioteca
-pip install mysql-connector-python
+#pip install mysql-connector-python
 
 from multiprocessing import connection
-import pwd
 from sqlite3 import Cursor, connect
 from tkinter import _Cursor
 import mysql.connector
@@ -13,11 +12,8 @@ import pandas as pd
 def create_server_connection (host_name, user_name, user_pasword):
     connection = None
     try:
-        connection = mysql.connector.connect (
-            host = host_name
-            user = user_name
-            passwd = user_pasword
-        )
+        connection = mysql.connector.connect (host = host_name,user = user_name,passwd = user_pasword)
+            
         print ("MySQL Database connection sucessful")
     except Error as err:
         print ("Error:'{err}'")
@@ -27,7 +23,7 @@ def create_server_connection (host_name, user_name, user_pasword):
 
 #criar banco de dados
 def create_database(connection,query):
-    cursor = connection.cursor():
+    cursor = connection.cursor()
     try:
         cursor.execute(query)
         print("Database created sucessfully")
@@ -39,12 +35,7 @@ def create_database(connection,query):
 def creat_db_connection(host_name, user_name, user_pasword, db_name):
     connection = None
     try:
-        connection = mysql.connector.connect(
-            host = host_name
-            user = user_name
-            passwd = user_pasword
-            database = db_name
-        )
+        connection = mysql.connector.connect(host = host_name,user = user_name,passwd = user_pasword,database = db_name)
         print("MySQL Database connection successful")
     except Error as err:
         print("'Error: '{err}'")
